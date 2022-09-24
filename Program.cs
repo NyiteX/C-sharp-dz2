@@ -331,32 +331,26 @@ class Massive_1: MassiveBasic
         }
     }
 }
-
 class Math12
 {
-    protected string str = "ad";
-    protected int x;
-    protected int y;
+    private string? str;
+    private int x;
+    private int y;
     public bool ProverAri(string str)
     {
         if (str.Length > 0)
         {
-                for (int i = 1; i < str.Length; i++)
-                {
-                    if (!Char.IsDigit(str[i]) && str[i] != '-' && str[i] != '+')
-                        return false;
-                }
+            for (int i = 1; i < str.Length; i++)
+                if (!Char.IsDigit(str[i]) && str[i] != '-' && str[i] != '+')
+                    return false;
             return true;
         }
         return false;
     }
     public Math12() { }
-    public Math12(int X) { this.x = X; }
-    public static Math12 operator +(Math12 m, Math12 m2) { return new Math12 { x = m.x + m2.x }; }
-    public static Math12 operator -(Math12 m, Math12 m2) { return new Math12 { x = m.x - m2.x }; }
-    public int getX() { return x; }
     public void Vvod()
     {
+        str = "ad";
         x = 0;
         y = 0;
         Console.Write("Arifmeticheskoe virazhenie with only + or - : ");

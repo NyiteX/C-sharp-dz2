@@ -104,7 +104,6 @@ class Programm
                     }
             }
         } while (vvod != 27);
-
     }
 }
 class MassiveBasic
@@ -198,6 +197,7 @@ class Massive_1: MassiveBasic
             iMax = te;
         }
         kol = 0;
+        double sum = 0;
         Console.WriteLine("min = " + min + "\nmax = " + max);
         bool f = false;
         for (int i = 0; i < y; i++)
@@ -207,10 +207,14 @@ class Massive_1: MassiveBasic
                 kol++;
                 if (kol == iMin) f = true;
                 if (kol > iMax) f = false;
-                if (f) Console.Write(B[i, u] + "\t");
+                if (f)
+                {
+                    Console.Write(B[i, u] + "\t");
+                    sum += B[i, u];
+                }
             }
         }
-        Console.WriteLine();
+        Console.WriteLine("\nsumm = " + sum);
     }
     public void Vvod1D()
     {

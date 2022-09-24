@@ -86,6 +86,7 @@ class Programm
                         Console.Clear();
                         TextFix T = new();
                         T.Vvod();
+                        Console.WriteLine("\n" + T.getText());
                         Console.WriteLine("\nPress any key to continue.");
                         Console.ReadKey();
                         break;
@@ -93,7 +94,10 @@ class Programm
                 case '7':
                     {
                         Console.Clear();
-
+                        TextFix T = new();
+                        T.Vvod();
+                        T.Fix();
+                        Console.WriteLine("\n" + T.getText());
                         Console.WriteLine("\nPress any key to continue.");
                         Console.ReadKey();
                         break;
@@ -138,10 +142,8 @@ class MassiveBasic
             if (str[0] == '-' || Char.IsDigit(str[0]))
             {
                 for (int i = 1; i < str.Length; i++)
-                {
                     if (!Char.IsDigit(str[i]))
                         return false;
-                }
             }
             else
                 return false;
@@ -411,6 +413,7 @@ class Math12
 class TextFix
 {
     private string? str;
+    public string getText() { return str; }
     public void Vvod()
     {
         Console.WriteLine("Enter text here: ");
@@ -431,8 +434,50 @@ class TextFix
             }
         }
         this.str = new string(str2);
+    }
+    public void Fix()
+    {
+        int kol = 0;
+        int k = 0;
+        string word;
+        char[] tmp = new char[20];
+        str += ' ';
+        char[] str2 = str.ToCharArray();
 
-        Console.WriteLine();
-        Console.WriteLine(str);
+        Console.Write("Enter censor word: ");
+        word = Console.ReadLine();
+
+        for (int i = 0; i < str2.Length; i++, k++)
+        {
+            if (Char.IsLetter(str2[i]))
+                tmp[k] = str2[i];  
+            if (str2[i] == ' ' || i == str2.Length-1)
+            {
+                bool b = true;
+                
+                for (int l = 0; l < word.Length; l++)
+                {
+                    if (tmp[l+1] != word[l])
+                    {
+                        b = false;
+                        break;
+                    }                  
+                }
+                if (b)
+                {
+                    i -= k;
+                    for (int s = 1; s < k; s++)
+                    {
+                        str2[++i] = '*';                    
+                    }
+                    kol++;
+                }
+                Array.Clear(tmp);
+                k = 0;
+            }
+            if (!Char.IsLetter(str2[i])) k = 0;
+            Console.WriteLine(tmp);
+        }
+        Console.WriteLine(str2);
     }
 }

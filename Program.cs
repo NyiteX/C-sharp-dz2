@@ -477,9 +477,8 @@ class TextFix
                 k = 0;
             }
             if (!Char.IsLetter(str2[i])) k = 0;
-            Console.WriteLine(tmp);
         }
-        Console.WriteLine(str2);
-        Console.WriteLine("censor words = "+ kol);
+        Console.WriteLine("\nCensor words = " + kol);
+        Console.WriteLine(str2);      
     }
 }

@@ -96,8 +96,7 @@ class Programm
                         Console.Clear();
                         TextFix T = new();
                         T.Vvod();
-                        T.Fix();
-                        Console.WriteLine("\n" + T.getText());
+                        T.Fix();                
                         Console.WriteLine("\nPress any key to continue.");
                         Console.ReadKey();
                         break;
@@ -481,5 +480,6 @@ class TextFix
             Console.WriteLine(tmp);
         }
         Console.WriteLine(str2);
+        Console.WriteLine("censor words = "+ kol);
     }
 }

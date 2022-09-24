@@ -202,12 +202,11 @@ class Massive_1: MassiveBasic
         bool f = false;
         for (int i = 0; i < y; i++)
         {
+            if (kol >= iMax) break;
             for (int u = 0; u < s; u++)
             {
-                kol++;
-                if (kol == iMin) f = true;
-                if (kol > iMax) f = false;
-                if (f)
+                if (kol >= iMax) break;
+                if (++kol >= iMin)
                 {
                     Console.Write(B[i, u] + "\t");
                     sum += B[i, u];

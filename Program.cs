@@ -199,7 +199,6 @@ class Massive_1: MassiveBasic
         kol = 0;
         double sum = 0;
         Console.WriteLine("min = " + min + "\nmax = " + max);
-        bool f = false;
         for (int i = 0; i < y; i++)
         {
             if (kol >= iMax) break;

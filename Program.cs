@@ -1,5 +1,107 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Diagnostics.Metrics;
+using System.Security.Cryptography.X509Certificates;
+class Programm
+{
+    static void Main()
+    {
+        char vvod;
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("1.Part 1\n2.Part 2\n3.Part 3\n4.Part 4\n5.Part 5\n6.Part 6\n7.Part 7\n");
+            vvod = Console.ReadKey().KeyChar;
 
+            switch (vvod)
+            {
+                case '1':
+                    {
+                        const int D1x = 5;
+                        const int D2x = 3;
+                        const int D2y = 4;
+                        Massive_1 M = new Massive_1(D1x, D2x, D2y);
+                        Console.Clear();
+                        M.Vvod1D();
+                        M.PrintMas1D();
+                        M.PrintMas2D();
+                        M.Max_Min();
+                        Console.WriteLine("\nPress any key to continue.");
+                        Console.ReadKey();
+                        break;
+                    }
+                case '2':
+                    {
+                        Console.Clear();
+                        Massive_1 M2 = new Massive_1(5, 5);
+                        M2.Rand(-100, 100);
+                        M2.PrintMas2D();
+                        M2.Summ();
+                        Console.WriteLine("\nPress any key to continue.");
+                        Console.ReadKey();
+                        break;
+                    }
+                case '3':
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Cesar =/");
+
+                        Console.WriteLine("\nPress any key to continue.");
+                        Console.ReadKey();
+                        break;
+                    }
+                case '4':
+                    {
+                        Console.Clear();
+                        Massive_1 M2 = new Massive_1(5, 5);
+                        M2.Rand(-100, 100);
+                        M2.PrintMas2D();
+                        M2.Umnozh();
+                        M2.PrintMas2D();
+                        Console.WriteLine("\nNext part: Press any key to continue.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        M2.Rand(-10, 10);
+                        M2.MatrixMath();
+                        Console.WriteLine("\nPress any key to continue.");
+                        Console.ReadKey();
+                        break;
+                    }
+                case '5':
+                    {
+                        Console.Clear();
+                        Math12 Math1 = new();
+                        Math1.Vvod();
+                        //Math12 Math1 = new (5);
+                        //Math12 Math2 = new (15);
+                        //Math12 Math3 = new ();
+                        //Math3 = Math1 + Math2;
+                        //Console.WriteLine(Math1.getX() + "+" + Math2.getX() + "=" + Math3.getX());
+                        //Math3 = Math1 - Math2;
+                        //Console.WriteLine(Math1.getX() + "-" + Math2.getX() + "=" + Math3.getX());
+                        Console.WriteLine("\nPress any key to continue.");
+                        Console.ReadKey();
+                        break;
+                    }
+                case '6':
+                    {
+                        Console.Clear();
+
+                        Console.WriteLine("\nPress any key to continue.");
+                        Console.ReadKey();
+                        break;
+                    }
+                case '7':
+                    {
+                        Console.Clear();
+
+                        Console.WriteLine("\nPress any key to continue.");
+                        Console.ReadKey();
+                        break;
+                    }
+            }
+        } while (vvod != 27);
+
+    }
+}
 class MassiveBasic
 {
     protected Random rnd = new Random();
@@ -228,99 +330,86 @@ class Massive_1: MassiveBasic
             Console.WriteLine();
         }
     }
-    
 }
-class Programm
+
+class Math12
 {
-    static void Main()
-    {        
-        char vvod;
-        do
+    protected string str = "ad";
+    protected int x;
+    protected int y;
+    public bool ProverAri(string str)
+    {
+        if (str.Length > 0)
         {
-            Console.Clear();
-            Console.WriteLine("1.Part 1\n2.Part 2\n3.Part 3\n4.Part 4\n5.Part 5\n6.Part 6\n7.Part 7\n");
-            vvod = Console.ReadKey().KeyChar;
+                for (int i = 1; i < str.Length; i++)
+                {
+                    if (!Char.IsDigit(str[i]) && str[i] != '-' && str[i] != '+')
+                        return false;
+                }
+            return true;
+        }
+        return false;
+    }
+    public Math12() { }
+    public Math12(int X) { this.x = X; }
+    public static Math12 operator +(Math12 m, Math12 m2) { return new Math12 { x = m.x + m2.x }; }
+    public static Math12 operator -(Math12 m, Math12 m2) { return new Math12 { x = m.x - m2.x }; }
+    public int getX() { return x; }
+    public void Vvod()
+    {
+        x = 0;
+        y = 0;
+        Console.Write("Arifmeticheskoe virazhenie with only + or - : ");
+        while (!ProverAri(str))
+        {
+            str = Console.ReadLine();
+            if (!ProverAri(str))
+                Console.WriteLine("Wrong input.");
+        }
+        Console.WriteLine();
 
-            switch (vvod)
+        bool xF = true, yF = false;
+        bool plus = false, minus = false;
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (str[i] == '+')
             {
-                case '1':
-                    {
-                        const int D1x = 5;
-                        const int D2x = 3;
-                        const int D2y = 4;
-                        Massive_1 M = new Massive_1(D1x, D2x, D2y);
-                        Console.Clear();
-                        M.Vvod1D();
-                        M.PrintMas1D();
-                        M.PrintMas2D();
-                        M.Max_Min();
-                        Console.WriteLine("\nPress any key to continue.");
-                        Console.ReadKey();
-                        break;
-                    }
-                case '2':
-                    {
-                        Console.Clear();
-                        Massive_1 M2 = new Massive_1(5, 5);
-                        M2.Rand(-100, 100);
-                        M2.PrintMas2D();
-                        M2.Summ();
-                        Console.WriteLine("\nPress any key to continue.");
-                        Console.ReadKey();
-                        break;
-                    }
-                case '3':
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Cesar =/");
-
-                        Console.WriteLine("\nPress any key to continue.");
-                        Console.ReadKey();
-                        break;
-                    }
-                case '4':
-                    {
-                        Console.Clear();
-                        Massive_1 M2 = new Massive_1(5, 5);
-                        M2.Rand(-100, 100);
-                        M2.PrintMas2D();
-                        M2.Umnozh();
-                        M2.PrintMas2D();
-                        Console.WriteLine("\nNext part: Press any key to continue.");
-                        Console.ReadKey();
-                        Console.Clear();
-                        M2.Rand(-10, 10);
-                        M2.MatrixMath();
-                        Console.WriteLine("\nPress any key to continue.");
-                        Console.ReadKey();
-                        break;
-                    }
-                case '5':
-                    {
-                        Console.Clear();
-                        
-                        Console.WriteLine("\nPress any key to continue.");
-                        Console.ReadKey();
-                        break;
-                    }
-                case '6':
-                    {
-                        Console.Clear();
-
-                        Console.WriteLine("\nPress any key to continue.");
-                        Console.ReadKey();
-                        break;
-                    }
-                case '7':
-                    {
-                        Console.Clear();
-
-                        Console.WriteLine("\nPress any key to continue.");
-                        Console.ReadKey();
-                        break;
-                    }
+                xF = false;
+                yF = false;
             }
-        } while (vvod != 27);
+            if (str[i] == '-')
+            {
+                xF = false;
+                yF = false;
+            }
 
+            if (Char.IsDigit(str[i]))
+            {
+                if (!yF)
+                    x = x * 10 + (str[i] - 48);
+                if (yF)
+                    y = y * 10 + (str[i] - 48);
+            }
+            if (!xF && !yF || i == str.Length-1)
+            {
+                if (plus)
+                    x += y;
+                if (minus)
+                    x -= y;
+                yF = true;
+                y = 0;
+            }
+            if (str[i] == '+')
+            {
+                plus = true;
+                minus = false;
+            }
+            if (str[i] == '-')
+            {
+                plus = false;
+                minus = true;
+            }
+        }
+        Console.WriteLine(str + "=" + x);
     }
 }

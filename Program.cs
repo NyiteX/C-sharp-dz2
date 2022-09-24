@@ -84,7 +84,8 @@ class Programm
                 case '6':
                     {
                         Console.Clear();
-
+                        TextFix T = new();
+                        T.Vvod();
                         Console.WriteLine("\nPress any key to continue.");
                         Console.ReadKey();
                         break;
@@ -405,5 +406,33 @@ class Math12
             }
         }
         Console.WriteLine(str + "=" + x);
+    }
+}
+class TextFix
+{
+    private string? str;
+    public void Vvod()
+    {
+        Console.WriteLine("Enter text here: ");
+        str = Console.ReadLine();
+
+        char[]str2 = str.ToCharArray();
+        for (int i = 0; i < str2.Length; i++)
+        {
+            if (i == 0)
+                str2[0] = Char.ToUpper(str2[0]);
+            else
+            {
+                if (str[i - 1]=='.' || str[i - 1] == '!' || str[i - 1] == '?')
+                {
+                    while (!Char.IsLetter(str[i])) i++;
+                    str2[i] = Char.ToUpper(str2[i]);
+                }
+            }
+        }
+        this.str = new string(str2);
+
+        Console.WriteLine();
+        Console.WriteLine(str);
     }
 }

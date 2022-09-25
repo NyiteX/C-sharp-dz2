@@ -421,11 +421,15 @@ class TextFix
         str = Console.ReadLine();
 
         char[]str2 = str.ToCharArray();
+        bool first = true;
         for (int i = 0; i < str2.Length; i++)
         {
-            if (i == 0)
-                str2[0] = Char.ToUpper(str2[0]);
-            else
+            if (first && Char.IsLetter(str[i]))
+            {
+                str2[i] = Char.ToUpper(str2[i]);
+                first = false;
+            }
+            if (i>0)
             {
                 if (str[i - 1]=='.' || str[i - 1] == '!' || str[i - 1] == '?')
                 {

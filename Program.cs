@@ -429,7 +429,13 @@ class TextFix
             {
                 if (str[i - 1]=='.' || str[i - 1] == '!' || str[i - 1] == '?')
                 {
-                    while (!Char.IsLetter(str[i])) i++;
+                    while (!Char.IsLetter(str[i]))
+                    {
+                        if (i + 1 < str2.Length)
+                            i++;
+                        else
+                            break;
+                    }               
                     str2[i] = Char.ToUpper(str2[i]);
                 }
             }

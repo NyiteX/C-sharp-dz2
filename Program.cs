@@ -429,7 +429,7 @@ class TextFix
                 str2[i] = Char.ToUpper(str2[i]);
                 first = false;
             }
-            if (i>0)
+            if (i > 0)
             {
                 if (str[i - 1]=='.' || str[i - 1] == '!' || str[i - 1] == '?')
                 {
@@ -453,22 +453,25 @@ class TextFix
         string word;
         char[] tmp = new char[20];
         str += ' ';
+        str = str.ToLower();
         char[] str2 = str.ToCharArray();
 
         Console.Write("Enter censor word: ");
         word = Console.ReadLine();
-
-        for (int i = 0; i < str2.Length; i++, k++)
+        word = word.ToLower();
+        for (int i = 0; i < str2.Length; i++)
         {
             if (Char.IsLetter(str2[i]))
-                tmp[k] = str2[i];  
+                tmp[k++] = str2[i];  
             if (str2[i] == ' ' || i == str2.Length-1)
             {
                 bool b = true;
                 
-                for (int l = 0; l < word.Length; l++)
+                for (int l = 0, s = 0; l < word.Length; l++,s++)
                 {
-                    if (tmp[l+1] != word[l])
+                    if (tmp[s] == '\0')
+                        s++;
+                    if (tmp[s] != word[l])
                     {
                         b = false;
                         break;
@@ -477,10 +480,8 @@ class TextFix
                 if (b)
                 {
                     i -= k;
-                    for (int s = 1; s < k; s++)
-                    {
-                        str2[++i] = '*';                    
-                    }
+                    for (int s = 0; s < k; s++)
+                        str2[i] = '*';                 
                     kol++;
                 }
                 Array.Clear(tmp);
